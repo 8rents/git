@@ -1,3 +1,11 @@
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[safe]
+	directory = D:/GitHub
+	directory = D:/Repo/Settings/CLI
 [user]
 	name = Brenton Holiday
 	email = 8rents@gmail.com
@@ -264,8 +272,4 @@
 	theirs = "!f() { git checkout --theirs $@ && git add $@; }; f"
 	subrepo = !sh -c 'git filter-branch --prune-empty --subdirectory-filter $1 master' -
 	human = name-rev --name-only --refs=refs/heads/*
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+
