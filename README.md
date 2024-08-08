@@ -2,55 +2,23 @@
 
 > *Fully realized git configuration files. Just about all of the variables and settings are included.*
 
-***
-
-## Included Files
-
-Since Git configuation files don't have a file type I just used the generic `toml` file type as it's common for similar config files. Please note that for these files to work they will have to be renamed as specified below.
-
-- `config.toml` (aka **`.gitconfig`**)
-- `global-ignore.toml` (aka **`.gitignore_global`**)
+---
 
 ## How to use these files
 
-There's a few ways to go about it.
+The best way to use these files is to simply clone this repository to `.config/git` in your users home directory.
 
-### Symlink to these files in this directory    
-*Best Approach*
+You can also symlink the directory to `~/.config/git` and leave it in another location.
 
-With this approach you can keep the files where ever you want to and version them with git without having any of your other dot files get in the way.
+## Included Files
 
-> **Be sure to replace the `path/to/this/folder/` with the correct path.**
+There are a few different files that are at play here.
 
-```bash
-ln -s path/to/this/folder/config.toml ~/.gitconfig
-ln -s path/to/this/folder/global-ignore.toml ~/.gitignore_global
-```
+- `config` - The main configuration file. This file is loaded first 
+- `ignore` - The user level global ignore file
+- `aliases` - A file of aliases to make using git on the CLI easier.
 
-### Copy & rename these files with this terminal command     
-*Ok Approach*
 
-This approach is fine but you lose having your gitconfig files in isolation for easy versioning and storage.
+---
 
-> **Be sure to replace the `path/to/this/folder/` with the correct path.**
-
-```bash
-cp -f path/to/this/folder/config.toml ~/.gitconfig
-cp -f path/to/this/folder/global-ignore.toml ~/.gitignore_global
-```
-
-### Manually copy and rename these files    
-*Not great approach*
-
-This approach is not the best as you lose the isolation, versioning and you'll have to manually rename the files.
-
-Simply move them to your home directory and rename them as such:
-
-- config.toml > `.gitconfig`
-- global-ignore.toml > `.gitignore_global`
-
-*Make sure to start the file names with a period.*
-
-***
-
-🤍 **2023 [Brenton Holiday](https://allmylinks.com/8rents)** aka *8rents*
+🤍 **2024 [Brenton Holiday](https://brenton.holiday)**
