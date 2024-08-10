@@ -6,9 +6,9 @@
 
 ## How to use these files
 
-The best way to use these files is to simply clone this repository to `.config/git` in your users home directory.
+The best way to use these files is to simply clone this repository to `~/.config/git` (in your users home directory).
 
-You can also symlink the directory to `~/.config/git` and leave it in another location.
+You can also symlink the directory to `~/.config/git` and leave it in another location (like a centralized dotfiles directory).
 
 ## Included Files
 
@@ -18,6 +18,7 @@ There are a few different files that are at play here.
 - `ignore` - The user level global ignore file
 - `aliases` - A file of aliases to make using git on the CLI easier.
 
+**Happy Giting!**
 
 ---
 
