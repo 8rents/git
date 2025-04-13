@@ -21,6 +21,7 @@
   # set pager to cat instead of delta as cat is more platform independent
   pager = cat # delta
   excludesfile = ignore
+  autocrlf = true
 
 # Set all local directories to safe
 [safe]
