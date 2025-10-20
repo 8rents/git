@@ -16,12 +16,13 @@
   path = aliases
 
 [core]
+  # windows line endings \r\n
+  autocrlf = true
   editor = vscode
   whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
   # set pager to cat instead of delta as cat is more platform independent
   pager = cat # delta
   excludesfile = ignore
-  autocrlf = true
 
 # Set all local directories to safe
 [safe]
