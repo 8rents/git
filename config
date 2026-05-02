@@ -77,49 +77,19 @@
   prune = true
 
 # Instantly browse your working repository in gitweb
-[instaweb]
-  httpd = apache2 -f
+#[instaweb]
+# httpd = apache2 -f
 
 # The git rerere functionality is a bit of a hidden feature. The name stands for “reuse recorded resolution” and, as the name implies, it allows you to ask Git to remember how you’ve resolved a hunk conflict so that the next time it sees the same conflict, Git can resolve it for you automatically.
 [rerere]
   enabled = 1
   autoupdate = 1
 
-# Platform-independent configuration for using Visual Studio Code for merges/diffs (make sure that the 'code' executable is in the path)
-[diff]
-  #tool = vscode   # Uncomment to use VS Code for diffing
-[difftool "vscode"]
-  name = vscode
-  cmd = code --wait --diff $LOCAL $REMOTE
+# Merge and Diff Tools
+# Using "Sublime Merge"
+[mergetool "smerge"]
+	cmd = smerge mergetool $BASE $LOCAL $REMOTE -o $MERGED
+	trustExitCode = true
 
-# Set the merge tool 
-[merge]
-  tool = vscode   # Uncomment to use VS Code for merging
-
-# Settings for the mergetool
-[mergetool]
-  prompt = false
-  keepBackup = false
-  keepTemporaries = false
-[mergetool "vscode"]
-  cmd = code --wait $MERGED
-
-# Features for Delta - merge and pager tool
-# [delta]
-#   features = line-numbers decorations
-#   line-numbers = true
-
-# [delta "decorations"]
-#   minus-style = red bold normal
-#   plus-style = green bold normal
-#   minus-emph-style = white bold red
-#   minus-non-emph-style = red bold normal
-#   plus-emph-style = white bold green
-#   plus-non-emph-style = green bold normal
-#   file-style = yellow bold none
-#   file-decoration-style = yellow box
-#   hunk-header-style = magenta bold
-#   hunk-header-decoration-style = magenta box
-#   minus-empty-line-marker-style = normal normal
-#   plus-empty-line-marker-style = normal normal
-#   line-numbers-right-format = "{np:^4}│ "
+[difftool "smerge"]
+	cmd = smerge $LOCAL $REMOTE
