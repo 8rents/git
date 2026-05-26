@@ -1,63 +1,53 @@
-# Fully commented gitconfig file
+# Windows git config
+# github.com/8rents/git
+# Last updated: 2026-05-26
 
-# Much better looking than my non-commented config file
-
-# The oroginal giost was located at:
-# https://gist.github.com/daedam/0f738d7baa52920035f837dc22929da2
-
-# Documentation & further reading:
-# https://git-scm.com/docs/git-config
-# _______________________________________________________________
-# Last updated: 2026-05-02
-
-
-# External files to include into this .config file
 [include]
+# External files to include into this .config file
+  
   path = aliases
+  # Git alias definitions file
 
-# Core behavior of git
 [core]
-
+# Core behavior of git
+  
+  pager = delta # less, most, delta
   # Pager - set command line pager
-  pager = delta
   
-  # Preffered Text Editor
   editor = subl # code, subl, mate, nano, vin
+  # Preffered Text Editor
   
-  # Path to external excludes file 
   excludesfile = ignore
+  # Path to external excludes file 
   
-  # How to handle and detect whitespace issues
-  whitespace = trailing-space,space-before-tab,indent-with-non-tab,cr-at-eol
-  # Possible Values:
-    # trailing-space - Shorthand for blank-at-eol and blank-at-eof
-      # blank-at-eol - Finds spaces/tabs at the end of a line.
-      # blank-at-eof - Notices blank lines at the very end of a file.
-    # space-before-tab - Finds spaces before tabs at the start of a line.
-    # indent-with-non-tab - Flags lines starting with spaces instead of tabs (uses tabwidth).
-    # tab-in-indent - Flags tabs used within the indentation of a line.
-    # cr-at-eol - Treats carriage returns (Windows-style) as valid (not errors).
+  whitespace = trailing-space,space-before-tab,indent-with
+  # How to handle and detect whitespace issues, values separated with a comma
+  # trailing-space - Shorthand for blank-at-eol and blank-at-eof
+    # blank-at-eol - Finds spaces/tabs at the end of a line.
+    # blank-at-eof - Notices blank lines at the very end of a file.
+  # space-before-tab - Finds spaces before tabs at the start of a line.
+  # indent-with-non-tab - Flags lines starting with spaces instead of tabs (uses tabwidth).
+  # tab-in-indent - Flags tabs used within the indentation of a line.
+  # cr-at-eol - Treats carriage returns (Windows-style) as valid (not errors).
 
-  # how to handle line endings when moving files between your computer (working reww) and the Git repository (index)
   autocrlf = true
-  # Possible Values:
-    # true - Converts LF to CRLF on checkout; CRLF to LF on commit
-      # Use true for Windows
-    # input - 
-      # No change on checkout; converts CRLF to LF on commit.
-        # Use input for macOS / Linux
-    # false
-      # No conversion happens. Files are saved exactly as they are.
-        # Use false for Same-OS Teams
+  # how to handle line endings when moving files between your computer (working reww) and the Git repository (index)
+  # true - Windows - Converts LF to CRLF on checkout; CRLF to LF on commit
+  # input - macOS / Linux - No change on checkout; converts CRLF to LF on commit.
+  # false - (Same-OS Teams) No conversion happens. Files are saved exactly as they are.
 
-# Set all local directories to safe
+
 [safe]
+# Set a folder for safe execution of code
+  
   directory = *
   # * makes all directories on the file system safe
 
 
-# Set the local git users credentials
+
 [user]
+# Set the local git users credentials
+
   # Name of User
   name = Brenton Holiday
   
@@ -69,14 +59,20 @@
 
 
 [init]
-  # Set the default branch name
+# Settings for when git initializes
+
+  
   defaultBranch = main
+  # Set the default branch name
+  
 
-  # Path to directory for git tempalates
   # templateDir = 
+  # Path to directory for git tempalates
 
-# Git Large File Storage (LFS) replaces large files such as audio samples, videos, datasets, and graphics with text pointers
+
 [filter "lfs"]
+# Git Large File Storage (LFS) replaces large files such as audio samples, videos, datasets, and graphics with text pointers
+
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f
   process = git-lfs filter-process
@@ -84,12 +80,15 @@
 
 
 [web]
-  # Preffered Web Browser
+# Git web settings
+
+  # Preffered Browser
   browser = google-chrome
 
 
-# On Fetch configuration
 [fetch]
+# Fetch settings
+
   # Always prune deleted remote branches when fetching
   prune = true
 
@@ -97,20 +96,27 @@
   recurseSubmodules = true
 
 
-# The git rerere functionality is a bit of a hidden feature. The name stands for "reuse recorded resolution" and, as the name implies, it allows you to ask Git to remember how you’ve resolved a hunk conflict so that the next time it sees the same conflict, Git can resolve it for you automatically.
 [rerere]
+# The git rerere functionality is a bit of a hidden feature. The name stands for "reuse recorded resolution" and, as the name implies, it allows you to ask Git to remember how you’ve resolved a hunk conflict so that the next time it sees the same conflict, Git can resolve it for you automatically.
   enabled = 1
   autoupdate = 1
 
 
-# Sublime merge "smerge" as Merge & Diff tool
 
-# Merge Tool
+
+
 [merge]
-    tool = smerge
+# Merge Tool
+
+  tool = smerge
+  # Sublime merge "smerge" as Merge & Diff tool
+
 [mergetool "smerge"]
-    cmd = smerge mergetool \"$BASE\" \"$LOCAL\" \"$REMOTE\" -o \"$MERGED\"
-    trustExitCode = true
+
+  cmd = smerge mergetool \"$BASE\" \"$LOCAL\" \"$REMOTE\" -o \"$MERGED\"
+  # command to open and use smerge
+  
+  trustExitCode = true
 
 # Diff Tool
 [diff]
