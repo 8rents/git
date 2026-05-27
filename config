@@ -1,6 +1,15 @@
 # Windows git config
+# ==================
 # github.com/8rents/git
 # Last updated: 2026-05-26
+# ------------------
+# The original gist was located at:
+# https://gist.github.com/daedam/0f738d7baa52920035f837dc22929da2
+# ------------------
+# Documentation & further reading:
+# https://git-scm.com/docs/git-config
+# __________________
+
 
 [include]
 # External files to include into this .config file
