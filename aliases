@@ -1,18 +1,45 @@
+# Git aliases file
+
+# included via global git config
+# https://github.com/8rents/git
+
+# Even this file needs a section header
+# ====================
 [alias]
-  # add all files to staging
+
+  # Add
+  # ---
+  # include files for next commit
+  
+  # Add command
   a = add
+  
+  # Add all files in working directory
   aa = add --all
+
   # add all files interactively
   ai = add -i
-  #############
+
+
+  # Apply
+  # -----
+  #
+
+  # apply
   ap = apply
   as = apply --stat
   ac = apply --check
-  #############
+
+
+  
   ama = am --abort
   amr = am --resolved
   ams = am --skip
-  #############
+
+
+  # Branch
+  # -----(
+  # 
   b = branch
   ba = branch -a
   bd = branch -d
@@ -21,7 +48,10 @@
   bc = rev-parse --abbrev-ref HEAD
   bu = !git rev-parse --abbrev-ref --symbolic-full-name "@{u}"
   bs = !git-branch-status
-  #############
+
+
+  # Commit
+  # ------
   c = commit
   ca = commit -a
   cm = commit -m
@@ -30,17 +60,25 @@
   cd = commit --amend
   cad = commit -a --amend
   ced = commit --allow-empty --amend
-  #############
+
+  # clone
+  # -----
   cl = clone
   cld = clone --depth 1
   clg = !sh -c 'git clone https://github.com/$1 $(basename $1)' -
-  clgp = !sh -c 'git clone git@github.com:$1 $(basename $1)' -
+  clgp = !sh -c 'git clone git@github.com:$1 $(basename $1)' 
   clgu = !sh -c 'git clone git@github.com:$(git config --get user.username)/$1 $1' -
-  #############
+
+
+  # Cherry Pick
+  # -----------
   cp = cherry-pick
   cpa = cherry-pick --abort
   cpc = cherry-pick --continue
-  #############
+
+
+  # Diff
+  # ----
   d = diff
   dp = diff --patience
   dc = diff --cached
@@ -48,20 +86,30 @@
   dck = diff --cached --check
   dt = difftool
   dct = difftool --cached
-  #############
+
+
+  # Fetch
+  # -----
   f = fetch
   fo = fetch origin
   fu = fetch upstream
-  #############
+
+  
   fp = format-patch
-  #############
+  
   fk = fsck
-  #############
+  
   g = grep -p
-  #############
+
+
+  # Log
+  # ---
   l = log --oneline
   lg = log --oneline --graph --decorate
-  #############
+
+
+  # List
+  # ----
   ls = ls-files
   lsf = !git ls-files | grep -i
   #############

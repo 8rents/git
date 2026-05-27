@@ -20,6 +20,11 @@ There are a few different files that are at play here.
 
 **Happy Giting!**
 
+## Further Reading / Sources
+
+- [original gist/ config](https://gist.github.com/daedam/0f738d7baa52920035f837dc22929da2)
+- [Documentation & further reading](https://git-scm.com/docs/git-config)
+
 ---
 
 🤍 **2024 [Brenton Holiday](https://brenton.holiday)**
