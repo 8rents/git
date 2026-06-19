@@ -1,126 +1,157 @@
-# Fully commented gitconfig file
+# Android Git Global Config
+# ========================= 
+# Repo: github.com/8rents/git
+# Last Updated: 2026-06-13
 
-# Much better looking than my non-commented config file
-
-# The oroginal giost was located at:
-# https://gist.github.com/daedam/0f738d7baa52920035f837dc22929da2
-
-# Documentation & further reading:
-# https://git-scm.com/docs/git-config
-# _______________________________________________________________
-# Last updated: 2024-08-07
-
-
-# External files to include into this .config file
 [include]
+# External files to include into this .config file
+  
   path = aliases
+  # Git alias definitions file
 
 [core]
-  # windows line endings \r\n
-  autocrlf = input
+# Core behavior of git
+  
+  pager = delta 
+  # Pager - set command line pager for git
+  # less, most, delta
+  
   editor = nano
-  whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
-  # set pager to cat instead of delta as cat is more platform independent
-  pager = cat # delta
+  # Preffered Text Editor
+  # code, subl, mate, nano, vim
+  
   excludesfile = ignore
+  # Path to external excludes file 
+  
+  whitespace = trailing-space,space-before-tab,indent-with
+  # How to handle and detect whitespace issues, values separated with a comma
+  # trailing-space - Shorthand for blank-at-eol and blank-at-eof
+    # blank-at-eol - Finds spaces/tabs at the end of a line.
+    # blank-at-eof - Notices blank lines at the very end of a file.
+  # space-before-tab - Finds spaces before tabs at the start of a line.
+  # indent-with-non-tab - Flags lines starting with spaces instead of tabs (uses tabwidth).
+  # tab-in-indent - Flags tabs used within the indentation of a line.
+  # cr-at-eol - Treats carriage returns (Windows-style) as valid (not errors).
 
-# Set all local directories to safe
+  autocrlf = input
+  # how to handle line endings when moving files between your computer (working reww) and the Git repository (index)
+  # true - Windows - Converts LF to CRLF on checkout; CRLF to LF on commit
+  # input - macOS / Linux - No change on checkout; converts CRLF to LF on commit.
+  # false - (Same-OS Teams) No conversion happens. Files are saved exactly as they are.
+
+
 [safe]
+# Set a folder for safe execution of code
+  
   directory = *
+  # * makes all directories on the file system safe
 
-# Set the local git users credentials
+
 [user]
+# Set the local git users credentials
+
+  # Name of User
   name = Brenton Holiday
+  
+  # Users email address
   email = 8rents@gmail.com
+
+  # Display username
   username = 8rents
 
-# GitHub credentials
-[github]
-  user = 8rents
-  token = token
 
-# Set the default branch name to "main"
 [init]
+# Settings for when git initializes
+  
   defaultBranch = main
-
-[gitflow "prefix"]
-  versiontag = v
-
-[sequence]
-  editor = interactive-rebase-tool
+  # Set the default branch name 
+  
+  # templateDir = template
+  # Path to directory for git tempalates
 
 
-# Git Large File Storage (LFS) replaces large files such as audio samples, videos, datasets, and graphics with text pointers
 [filter "lfs"]
+# Git Large File Storage (LFS) replaces large files such as audio samples, videos, datasets, and graphics with text pointers
+
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f
   process = git-lfs filter-process
   required = true
 
-# Email config - Send a collection of patches as emails
-[sendemail]
-  smtpencryption = tls
-  smtpserver = smtp.gmail.com
-  smtpuser = 8rents@gmail.com
-  smtppass = password
-  smtpserverport = 587
 
-# Web Browser
 [web]
-  browser = google-chrome
+# Git web settings
+#
+  # Preffered Browser
+  browser = firefox
 
-# Always use https:// protocol, even if the git:// protocol was requested
-[url "https://"]
-  insteadOf = git://
 
-# Always prune deleted remote branches when fetching
 [fetch]
+# Fetch settings
+
+  # Always prune deleted remote branches when fetching
   prune = true
 
-# Instantly browse your working repository in gitweb
-[instaweb]
-  httpd = apache2 -f
+  # Pull all submodules when cloning
+  recurseSubmodules = true
 
-# The git rerere functionality is a bit of a hidden feature. The name stands for “reuse recorded resolution” and, as the name implies, it allows you to ask Git to remember how you’ve resolved a hunk conflict so that the next time it sees the same conflict, Git can resolve it for you automatically.
+[push]
+# Push Settings
+
+  # whether or not to assume --set-upstream on default push when no upstream tracking
+  autoSetupRemote = true
+  
+  # ensure all submodule commits are available on a remote-tracking branch
+  # recurseSubmodules = true  
+ 
+  # whether or not to GPG-sign pushes
+  # gpgSign = true	
+	
 [rerere]
+# The git rerere functionality is a bit of a hidden feature.The name stands for "reuse recorded resolution" and, as the name implies, it allows you to ask Git to remember how yorrrrrr23fu’ve resolved a hunk con7flict so that the next time it sees the same conflict, Git can resolve it for you automatically.
   enabled = 1
   autoupdate = 1
 
-# Platform-independent configuration for using Visual Studio Code for merges/diffs (make sure that the 'code' executable is in the path)
-[diff]
-  #tool = vscode   # Uncomment to use VS Code for diffing
-[difftool "vscode"]
-  name = vscode
-  cmd = code --wait --diff $LOCAL $REMOTE
+# Gitflow
+[gitflow "prefix"]
+  versiontag = v
 
-# Set the merge tool 
+# GitHub credentials
+[github]
+  user = 8rents
+  # token = token
+
+# Delta Configuration
+[interactive]
+  cdiffFilter = delta --color-only
+  # Markup diffs for human consumption
+	  
+[delta]
+# Delta Settings
+
+  navigate = true 
+  # use n and N to move between diff sections
+
+  dark = true     
+  # or light = true, or omit for auto-detection
+     
+  side-by-side = true
+  # Show mdre / diff windows side by side
+
+  line-numbers = true
+  # Show line numbers
+    
 [merge]
-  tool = vscode   # Uncomment to use VS Code for merging
+# Merge Settings
 
-# Settings for the mergetool
-[mergetool]
-  prompt = false
-  keepBackup = false
-  keepTemporaries = false
-[mergetool "vscode"]
-  cmd = code --wait $MERGED
+  conflictStyle = diff3
+  # diff3, merge (default)
+  
+[credential "https://github.com"]
+  khelper = !/data/data/com.termux/files/usr/bin/gh auth git-credensinglekey
+	helper = !/data/data/com.termux/files/usr/bin/gh auth git-credential
+  # whether or not to accept one-letter input withouttia
+	
+[credential "https://gist.github.com"]
+	helper = !/data/data/com.termux/files/usr/bin/gh auth git-credential
 
-# Features for Delta - merge and pager tool
-# [delta]
-#   features = line-numbers decorations
-#   line-numbers = true
-
-# [delta "decorations"]
-#   minus-style = red bold normal
-#   plus-style = green bold normal
-#   minus-emph-style = white bold red
-#   minus-non-emph-style = red bold normal
-#   plus-emph-style = white bold green
-#   plus-non-emph-style = green bold normal
-#   file-style = yellow bold none
-#   file-decoration-style = yellow box
-#   hunk-header-style = magenta bold
-#   hunk-header-decoration-style = magenta box
-#   minus-empty-line-marker-style = normal normal
-#   plus-empty-line-marker-style = normal normal
-#   line-numbers-right-format = "{np:^4}│ "

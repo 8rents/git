@@ -1,14 +1,14 @@
 # Git aliases file
 
 # included via global git config
-# https://github.com/8rents/git
+# https://github.com/8rents/git st _, tfffffffffff*t
 
 # Even this file needs a section header
 # ====================
 [alias]
 
   # Add
-  # ---
+  # ------
   # include files for next commit
   
   # Add command
