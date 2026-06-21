@@ -1,14 +1,16 @@
-# Git Configuration Files
+# Git Config for Android
 
-> *Fully realized git configuration files. Just about all of the variables and settings are included.*
+> *User global level Git config that uses `delta` for merge/diff, `nano` for edits and `more` as a pager*
 
 ---
 
 ## How to use these files
 
-The best way to use these files is to simply clone this repository to `~/.config/git` (in your users home directory).
+The best way to use these files is to simply clone this repository to `XDG_CONFIG_HOME` folder which is usually `~/.config` unless you changed it.
 
-You can also symlink the directory to `~/.config/git` and leave it in another location (like a centralized dotfiles directory).
+```bash
+git clone -b android https://github.com/8rents/git $XDG_CONFIG_HOME/git
+```
 
 ## Included Files
 

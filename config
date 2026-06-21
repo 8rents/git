@@ -63,7 +63,7 @@
 [init]
 # Settings for when git initializes
   
-  defaultBranch = main
+  defaultBranch = info
   # Set the default branch name 
   
   # templateDir = template
