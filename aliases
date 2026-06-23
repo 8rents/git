@@ -1,250 +1,374 @@
-# Git aliases file
-
+# Git aliases
+# ===========
 # included via global git config
-# https://github.com/8rents/git st _, tfffffffffff*t
+# https://github.com/8rents/git
 
-# Even this file needs a section header
-# ====================
 [alias]
 
-  # Add
-  # ------
-  # include files for next commit
+# ========
+# Sections
+# ========
+# Repository Information and Health
+  # status, log, show
+# Downloading & Updating Repo
+  # clone, pull, fetch
+# Staging & Commiting
+# Remotes & Uploading
+# Branches and past commits
+
+
+# ================================= 
+# Repository Information and Health
+# =================================
+
+# Status
+# ------
+
+# Shows the current state of the repository
+s = status
+sb = status -s -b
+ 
+# Log
+# ---
+# Show commits, hashes and messages  
+l = log --oneline
+lg = log --oneline --graph --decorate
   
-  # Add command
-  a = add
+# Show 
+# ----
+# displays the metadata and the exact line-by-line code changes of your very last commit (HEAD).
+ 
+sh = show
+
+# displays patch diff (show includes -p  y default)
+shp = show -p
+
+# show with no color
+shnc = show -p --no-color
+
+
+# ===========================
+# Downloading & Updating Repo
+# ===========================
+
+# clone
+# ----
+# Makes a copy of a repository (or at least part of one)
+ 
+# Always --recurse-sunmodules on clone
+cl = clone --recurse-submodules
+clone = clone --recurse-submodules
   
-  # Add all files in working directory
-  aa = add --all
+# Shallow history clone
+cld = clone --recurse-submodules --depth 
+cld1 = clone --recurse-submodules --depth 1
+cld3 = clone --recurse-submodules --depth 3
+cld10 = clone --recurse-submodules --depth 
 
-  # add all files interactively
-  ai = add -i
+# Fetch
+# -----
+# Like pull but doest merge
+f = fetch
+fo = fetch origin
+fu = fetch upstream
 
+# Pull
+# ----
+# Like fetcb but merges your working tree
 
-  # Apply
-  # -----
-  #
+p = pull
+ 
+# Force Pull
+pf = pull -f
+pu = pull -u
+pt = pull --tags
+po = pull origin
+pao = pull --all origin
+pom = pull origin main
 
-  # apply
-  ap = apply
-  as = apply --stat
-  ac = apply --check
-
-
-  
-  ama = am --abort
-  amr = am --resolved
-  ams = am --skip
-
-
-  # Branch
-  # -----(
-  # 
-  b = branch
-  ba = branch -a
-  bd = branch -d
-  bdd = branch -D
-  br = branch -r
-  bc = rev-parse --abbrev-ref HEAD
-  bu = !git rev-parse --abbrev-ref --symbolic-full-name "@{u}"
-  bs = !git-branch-status
-
-
-  # Commit
-  # ------
-  c = commit
-  ca = commit -a
-  cm = commit -m
-  cam = commit -am
-  cem = commit --allow-empty -m
-  cd = commit --amend
-  cad = commit -a --amend
-  ced = commit --allow-empty --amend
-
-  # clone
-  # -----
-  cl = clone
-  cld = clone --depth 1
-  clg = !sh -c 'git clone https://github.com/$1 $(basename $1)' -
-  clgp = !sh -c 'git clone git@github.com:$1 $(basename $1)' 
-  clgu = !sh -c 'git clone git@github.com:$(git config --get user.username)/$1 $1' -
-
-
-  # Cherry Pick
-  # -----------
-  cp = cherry-pick
-  cpa = cherry-pick --abort
-  cpc = cherry-pick --continue
-
-
-  # Diff
-  # ----
-  d = diff
-  dp = diff --patience
-  dc = diff --cached
-  dk = diff --check
-  dck = diff --cached --check
-  dt = difftool
-  dct = difftool --cached
-
-
-  # Fetch
-  # -----
-  f = fetch
-  fo = fetch origin
-  fu = fetch upstream
+# ====================
+# Staging & Commiting
+# ====================
 
   
-  fp = format-patch
+# Add
+# ------
+# stage files for next commit
   
-  fk = fsck
+# Add command
+a = add
+
+# Add all files in working directory
+aa = add --all
+
+# add all files interactively
+ai = add -i
+
+ 
+# Commit
+# ------
+# Takes a snapshot of the current branch,  making an entry in the repos history
+ 
+# Commit (with detailed message)
+c = commit
+
+# commit All worktree & write detailed message
+ca = commit -a
+
+# commit w/ short Message
+cm = commit -m
+
+# Commit Add all short Message
+cam = commit -am
+
+# Commit with Empty Message
+cem = commit --allow-empty -m
+
+# Amend last commit (fix typo or something)
+camm = commit --amend
+
+# Add All & Amend last commit
+caa = commit -a --amend
+ 
+# Commit AMend Empty Message
+came = commit --allow-empty --amend
+
+# Commit Add All Amend Empty Message
+lcaamem = commit -a --allow-empty --amend
+
+
+# Push
+# ----
+# Sends updated repository data to another repo
+ps = pus
+
+# Force Push
+psf = push -f  
+psu = push -u
+pst = push --tags
+pso = push origin
+psao = push --all origin
+psom = push origin main
+# psoc = !git push origin $(git bc)
+# psaoc = !git push --all origin $(git bc)
+# psfoc = !git push -f origin $(git bc
+# psuoc = !git push -u origin $(git bc)
+# psdc = !git push origin :$(git bc)
+
+
+# ========================
+# Branches and past commits
+# ========================
+
+# Branc
+# ------
+b = branch
+
+# show All branches
+ba = branch -a
+
+# Delete branc
+bd = branch -d
+bdd = branch -D
+br = branch -r
+bc = rev-parse --abbrev-ref HEAD
+bu = !git rev-parse --abbrev-ref --symbolic-full-name "@{u}"
+bs = !git-branch-status
+
+# Checkout
+# --------
+
+
+# checkout a new brach
+ob = checkout -b 
+
+# checkout a commit
+o = checkout
+
+# Remote 
+# ------
+# Add, edit, delete remote repositories
+r = remote
+ 
+# add a new remote
+ra = remote add
+
+# Remove remote
+rr = remote rm
+
+# Remote View
+rv = remote -v
+
+# Remote rename
+rn = remote rename
+
+# remote prune
+rp = remote prune
+
+# remote show
+rs = remote show
+
+# Remote Add Origin
+rao = remote add origin
+
+# Remote Add Upstream
+rau = remote add upstream
+
+# Remote Remove Origin
+rro = remote remove origin
+
+# Remote Remove Upstream
+rru = remote remove upstream
+# Remote Show Origin
+rso = remote show origin
+# Show Upstream
+rsu = remote show upstream
+rpo = remote prune origin
+rpu = remote prune upstream
+
+
+# Cherry Pick
+# -----------
+# Apply changes from old commits to current commit 
+cp = cherry-pick
+cpa = cherry-pick --abort
+cpc = cherry-pick --continue
+
+# Merge
+# ----
+# Resolve conflicts between 2 or more files
+m = merge
+ma = merge --abort
+mc = merge --continue
+ms = merge --skip
+
+# Diff
+# ----
+# Compare 2 or more versions of a file
+d = diff
+dp = diff --patience
+dc = diff --cached
+dk = diff --check
+dck = diff --cached --check
+dt = difftool
+dct = difftool --ca
+
+
+# Submodules
+# ----------
+# Working with repos within repos
+
+
+# Add a new submodule
+subadd = !sh -c 'git submodule add.u://github.com/$1
+
+# Remove a submodule
+subrm = !sh -c 'git submodule deinit -f $1 &&5 rm -rf .git/modules/$1 && git rm -f $1' -
+
+# Update all Submodules
+subup = submodule update --init --recursive
+
+# Tag a submodule
+subpull = submodule foreach 'git pull --tags -f origin main || git pull --tags -f origin main'  
+
+# Apply
+# -----
+# The git apply command takes a local patch file (the output of git diff) and applies the changes directly to your local working directory files. Unlike merge or am it does not create a commit or affect history.
+ap = apply
+as = apply --stat
+ac = apply --check
+
+
+# ================
+# Email Operations
+# ================
+
+# am (Apply Mailbox)
+# ==================
+# Takes a series of emailed patch files and automatically applies them as structured commits to your current branch.
+ama = am --abort
+amr = am --resolved
+ams = am --skip
+
+# Format Patch
+# ------------
+# command converts specific Git commits into plaintext patch files (formatted as email messages) so you can share your code changes via email or apply them to another repository.
+fp = format-patch
+
+
+# Rewriting History
+# =================  
   
-  g = grep -p
+  
+# Rebase
+# ------
+rb = rebase
+rba = rebase --abort
+rbc = rebase --continue
+rbi = rebase --interactive
+rbs = rebase --skip
+
+# Reset
+# -----
+# Rewrites local history resetting it backward
+
+# reset --hard -  Completely wipes out the commits, the staging area, and all physical file changes in your folder. This cannot be easily undone.  
+reh = reset --hard  
+rehh = reset --hard HEAD
+
+# Moves your branch back and unstages your changes, but keeps the files intact in your working folder.gi
+re = reset
+rh = reset HEAD 
+rem = reset --mixed
+remh = reset --mixed HEAD
+
+# Moves your branch back, but keeps all your altered code staged in your index, ready to be committed agai 
+res = reset --soft
+resh = reset --soft HEAD
 
 
-  # Log
-  # ---
-  l = log --oneline
-  lg = log --oneline --graph --decorate
+
+# File & Worktree Operations
+# ==========================
+
+# rm (remove)
+# -----------
+
+# force
+rmf = m -f
+
+# force & recurse (into dirs)
+rmrf = rm -r -f
 
 
-  # List
-  # ----
-  ls = ls-files
-  lsf = !git ls-files | grep -i
-  #############
-  m = merge
-  ma = merge --abort
-  mc = merge --continue
-  ms = merge --skip
-  #############
-  o = checkout
-  om = checkout main
-  ob = checkout -b
-  opr = !sh -c 'git fo pull/$1/head:pr-$1 && git o pr-$1'
-  #############
-  pr = prune -v
-  #############
-  ps = push
-  psf = push -f
-  psu = push -u
-  pst = push --tags
-  #############
-  pso = push origin
-  psao = push --all origin
-  psfo = push -f origin
-  psuo = push -u origin
-  #############
-  psom = push origin main
-  psaom = push --all origin main
-  psfom = push -f origin main
-  psuom = push -u origin main
-  psoc = !git push origin $(git bc)
-  psaoc = !git push --all origin $(git bc)
-  psfoc = !git push -f origin $(git bc)
-  psuoc = !git push -u origin $(git bc)
-  psdc = !git push origin :$(git bc)
-  #############
-  pl = pull
-  pb = pull --rebase
-  #############
-  plo = pull origin
-  pbo = pull --rebase origin
-  plom = pull origin main
-  ploc = !git pull origin $(git bc)
-  pbom = pull --rebase origin main
-  pboc = !git pull --rebase origin $(git bc)
-  #############
-  plu = pull upstream
-  plum = pull upstream main
-  pluc = !git pull upstream $(git bc)
-  pbum = pull --rebase upstream main
-  pbuc = !git pull --rebase upstream $(git bc)
-  #############
-  rb = rebase
-  rba = rebase --abort
-  rbc = rebase --continue
-  rbi = rebase --interactive
-  rbs = rebase --skip
-  #############
-  re = reset
-  rh = reset HEAD
-  reh = reset --hard
-  rem = reset --mixed
-  res = reset --soft
-  rehh = reset --hard HEAD
-  remh = reset --mixed HEAD
-  resh = reset --soft HEAD
-  rehom = reset --hard origin/main
-  #############
-  r = remote
-  ra = remote add
-  rr = remote rm
-  rv = remote -v
-  rn = remote rename
-  rp = remote prune
-  rs = remote show
-  rao = remote add origin
-  rau = remote add upstream
-  rro = remote remove origin
-  rru = remote remove upstream
-  rso = remote show origin
-  rsu = remote show upstream
-  rpo = remote prune origin
-  rpu = remote prune upstream
-  #############
-  rmf = rm -f
-  rmrf = rm -r -f
-  #############
-  s = status
-  sb = status -s -b
-  #############
-  sa = stash apply
-  sc = stash clear
-  sd = stash drop
-  sl = stash list
-  sp = stash pop
-  ss = stash save
-  ssk = stash save -k
-  sw = stash show
-  st = !git stash list | wc -l 2>/dev/null | grep -oEi '[0-9][0-9]*'
-  #############
-  t = tag
-  td = tag -d
-  #############
-  w = show
-  wp = show -p
-  wr = show -p --no-color
-  #############
-  svnr = svn rebase
-  svnd = svn dcommit
-  svnl = svn log --oneline --show-commit
-  #############
-  subadd = !sh -c 'git submodule add git://github.com/$1 $2/$(basename $1)' -
-  subrm = !sh -c 'git submodule deinit -f -- $1 && rm -rf .git/modules/$1 && git rm -f $1' -
-  subup = submodule update --init --recursive
-  subpull = submodule foreach 'git pull --tags -f origin main || git pull --tags -f origin main'
-  #############
-  assume = update-index --assume-unchanged
-  unassume = update-index --no-assume-unchanged
-  assumed = !git ls -v | grep ^h | cut -c 3-
-  unassumeall = !git assumed | xargs git unassume
-  assumeall = !git status -s | awk {'print $2'} | xargs git assume
-  #############
-  bump = !sh -c 'git commit -am \"Version bump v$1\" && git psuoc && git release $1' -
-  release = !sh -c 'git tag v$1 && git pst' -
-  unrelease = !sh -c 'git tag -d v$1 && git pso :v$1' -
-  merged = !sh -c 'git o main && git plom && git bd $1 && git rpo' -
-  aliases = !git config -l | grep alias | cut -c 7-
-  snap = !git stash save 'snapshot: $(date)' && git stash apply 'stash@{0}'
-  bare = !sh -c 'git symbolic-ref HEAD refs/heads/$1 && git rm --cached -r . && git clean -xfd' -
-  whois = !sh -c 'git log -i -1 --author=\"$1\" --pretty=\"format:%an <%ae>\"' -
-  serve = daemon --reuseaddr --verbose --base-path=. --export-all ./.git
-  #############
-  behind = !git rev-list --left-only --count $(git bu)...HEAD
-  ahead = !git rev-list --right-only --count $(git bu)...HEAD
-  #############
-  ours = "!f() { git checkout --ours $@ && git add $@; }; f"
-  theirs = "!f() { git checkout --theirs $@ && git add $@; }; f"
-  subrepo = !sh -c 'git filter-branch --prune-empty --subdirectory-filter $1 main' -
-  human = name-rev --name-only --refs=refs/heads/*
+# fsck
+# ----
+# verifies the connectivity and validity of the objects in your Git database, helping you identify and recover corrupt or lost data.
+fk = fsck
+
+
+# grep
+# ----
+g = grep -p
+
+
+# List
+# ----
+ls  = ls-files
+lsf = !git ls-files | grep -i
+
+# pr = prune -v
+
+
+# Stash
+# -----
+sa = stash apply
+sc = stash clear
+sd = stash drop
+sl = stash list
+sp = stash pop
+ss = stash save
+ssk = stash save -k
+sw = stash show
+st = !git stash list | wc -l 2>/dev/null | grep -oEi '[0-9][0-9]*'
+
