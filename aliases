@@ -73,22 +73,22 @@
 
   # Fetch
   # =====
-  # Like pull but doest merge
+  # Downloads, changes worktree
   f = fetch
   fo = fetch origin
   fu = fetch upstream
 
   # Pull
   # ===
-  # Like fetcb but merges your working tree
-  p = pull
+  # Like fetch but indexes and commits
+  # downloads, changes work tree, adds and commits 
+  pl = pull
   # Force Pull
-  pf = pull -f
-  pu = pull -u
-  pt = pull --tags
-  po = pull origin
-  pao = pull --all origin
-  pom = pull origin main
+  plf = pull -f
+  plt = pull --tags
+  plo = pull origin
+  plo = pull upstream
+  ploa = pull origin --all
 
   # Staging & Commiting
   # ====================
@@ -147,7 +147,7 @@
   psu = push -u
   pst = push --tags
   pso = push origin
-  psao = push --all origin
+  psoa = push --all origin
   psom = push origin main
 
   # psoc = !git push origin $(git bc)
@@ -155,7 +155,7 @@
   # psfoc = !git push -f origin $(git bc)
   # psuoc = !git push -u origin $(git bc)
   # psdc = !git push origin :$(git bc)
-   
+
 
   # ========================
   # Branches and past commits
@@ -273,11 +273,13 @@
   # The git apply command takes a local patch file (the output of git diff) and applies the changes directly to your local working directory files. Unlike merge or am it does not create a commit or affect history.
   ap = apply
   as = apply --st 
+
+
   # Email Operations
   # ================
 
   # am (Apply Mailbox)
-  # ==================
+  # ------------------
   # Takes a series of emailed patch files and automatically applies them as structured commits to your current branch.
   ama = am --abort
   amr = am --resolved
@@ -288,7 +290,7 @@
   # command converts specific Git commits into plaintext patch files (formatted as email messages) so you can share your code changes via email or apply them to another repository.
   fp = format-patch
 
-  # =================  
+
   # Rewriting History
   # =================  
   
