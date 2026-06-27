@@ -1,13 +1,56 @@
 # Android Git Global Config
 # ========================= 
 # Repo: github.com/8rents/git
-# Last Updated: 2026-06-13
+# Last Updated: 2026-06-26
 
-[include]
-# External files to include into this .config file
+# Sections
+# --------
+# 026 Safe Folder
+# 032 User Info
+# 045 Initialization
+# 053 Core Functionality
+# 083 Fetch
+# 092 Push
+# 105 Large File Storage
+# 112 Web & Browser
+# 118 rerere (reuse recorded resolution)
+# 124 Gitflow
+# 128 Github
+# 133 Interactive (Delta Config)
+# 137 Delta
+# 152 Merge
+# 158 Includes / Aliases
+# ---------
+
+
+[safe]
+# Set a folder for safe execution of code
   
-  path = aliases
-  # Git alias definitions file
+  directory = *
+  # * makes all directories on the file system safe
+
+[user]
+# Set the local git users credentials
+
+  # Name of User
+  name = Brenton Holiday
+  
+  # Users email address
+  email = 8rents@gmail.com
+
+  # Display username
+  username = 8rents
+
+  # default GPG key to use when creating signed tags
+  # signingkey =
+[init]
+# Settings for when git initializes
+  
+  defaultBranch = info
+  # Set the default branch name 
+  
+  # templateDir = template
+  # Path to directory for git tempalates
 
 [core]
 # Core behavior of git
@@ -23,7 +66,7 @@
   excludesfile = ignore
   # Path to external excludes file 
   
-  whitespace = trailing-space,space-before-tab,indent-with
+  whitespace = trailing-space,space-before-tab,indent-with-non-tab
   # How to handle and detect whitespace issues, values separated with a comma
   # trailing-space - Shorthand for blank-at-eol and blank-at-eof
     # blank-at-eol - Finds spaces/tabs at the end of a line.
@@ -38,53 +81,6 @@
   # true - Windows - Converts LF to CRLF on checkout; CRLF to LF on commit
   # input - macOS / Linux - No change on checkout; converts CRLF to LF on commit.
   # false - (Same-OS Teams) No conversion happens. Files are saved exactly as they are.
-
-
-[safe]
-# Set a folder for safe execution of code
-  
-  directory = *
-  # * makes all directories on the file system safe
-
-
-[user]
-# Set the local git users credentials
-
-  # Name of User
-  name = Brenton Holiday
-  
-  # Users email address
-  email = 8rents@gmail.com
-
-  # Display username
-  username = 8rents
-
-
-[init]
-# Settings for when git initializes
-  
-  defaultBranch = info
-  # Set the default branch name 
-  
-  # templateDir = template
-  # Path to directory for git tempalates
-
-
-[filter "lfs"]
-# Git Large File Storage (LFS) replaces large files such as audio samples, videos, datasets, and graphics with text pointers
-
-  clean = git-lfs clean -- %f
-  smudge = git-lfs smudge -- %f
-  process = git-lfs filter-process
-  required = true
-
-
-[web]
-# Git web settings
-#
-  # Preffered Browser
-  browser = firefox
-
 
 [fetch]
 # Fetch settings
@@ -106,9 +102,23 @@
  
   # whether or not to GPG-sign pushes
   # gpgSign = true	
+
+
+[filter "lfs"]
+# Git Large File Storage (LFS) replaces large files such as audio samples, videos, datasets, and graphics with text pointers
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+
+[web]
+# Git web settings
+
+  # Preffered Browser
+  browser = firefox
 	
 [rerere]
-# The git rerere functionality is a bit of a hidden feature.The name stands for "reuse recorded resolution" and, as the name implies, it allows you to ask Git to remember how yorrrrrr23fu’ve resolved a hunk con7flict so that the next time it sees the same conflict, Git can resolve it for you automatically.
+  # The git rerere functionality is a bit of a hidden feature.The name stands for "reuse recorded resolution" and, as the name implies, it allows you to ask Git to remember how yorrrrrr23fu’ve resolved a hunk con7flict so that the next time it sees the same conflict, Git can resolve it for you automatically.
   enabled = 1
   autoupdate = 1
 
@@ -143,9 +153,9 @@
     
 [merge]
 # Merge Settings
-
   conflictStyle = diff3
-  # diff3, merge (default)
+  # diff3 is part of `diffutils` package
+  # merge (default)
   
 [credential "https://github.com"]
   khelper = !/data/data/com.termux/files/usr/bin/gh auth git-credensinglekey
@@ -155,3 +165,8 @@
 [credential "https://gist.github.com"]
 	helper = !/data/data/com.termux/files/usr/bin/gh auth git-credential
 
+[include]
+# External files to include into this .config file
+  
+  path = aliases
+  # Git alias definitions file

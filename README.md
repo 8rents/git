@@ -4,6 +4,21 @@
 
 ---
 
+## Required Installs
+
+- git (obviously)
+- gh - GitHub CLI tool, used for signing into GitHub
+- git-delta - delta is used as pager and merge tool
+- diffutils - diff3 is the set difftool, which comes in this package
+- most - system pager, especially for colored man docs
+- nano - text editor for writing commit messages. Maybe more...
+- gnupg - Creating a signing PGP key to sign commits with
+
+```bash
+apt update && \
+apt install git gh diffutils git-delta most nano gnupg
+```
+
 ## How to use these files
 
 The best way to use these files is to simply clone this repository to `XDG_CONFIG_HOME` folder which is usually `~/.config` unless you changed it.
@@ -20,7 +35,14 @@ There are a few different files that are at play here.
 - `ignore` - The user level global ignore file
 - `aliases` - A file of aliases to make using git on the CLI easier.
 
-**Happy Giting!**
+## Customizing Delta
+
+### Picking a theme
+
+To view:
+
+dark themes - `delta --show-syntax-themes --dark`
+light themes - `delta --show-syntax-themes --light`
 
 ## Further Reading / Sources
 
