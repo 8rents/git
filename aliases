@@ -110,28 +110,28 @@
   c = commit
 
   # commit All worktree & write detailed message
-  ca = commit -a
+  caa = commit -a
 
   # commit w/ short Message
   cm = commit -m
 
   # Commit Add all short Message
-  cam = commit -am
+  camm = commit -am
 
   # Commit with Empty Message
   cem = commit --allow-empty -m
 
   # Amend last commit (fix typo or something)
-  camm = commit --amend
+  cam = commit --amend
 
   # Add All & Amend last commit
-  caa = commit -a --amend
+  caam = commit -a --amend
  
   # Commit AMend Empty Message
-  came = commit --allow-empty --amend
+  camem = commit --allow-empty --amend
  
   # Commit Add All Amend Empty Message
-  caamem = commit -a --allow-empty --amend
+  caaem = commit -a --allow-empty --amend
 
  
   # Push
@@ -193,13 +193,13 @@
   ra = remote add
  
   # Remove remote
-  rr = remote rm
+  rrm = remote rm
 
   # Remote View
   rv = remote -v
 
   # Remote rename
-  rn = remote rename
+  rrn = remote rename
 
   # remote prune
   rp = remote prune
@@ -214,10 +214,10 @@
   rau = remote add upstream
 
   # Remote Remove Origin
-  rro = remote remove origin
+  rrmo = remote remove origin
 
   # Remote Remove Upstream
-  rru = remote remove upstream
+  rrmu = remote remove upstream
   # Remote Show Origin
   rso = remote show origin
   # Show Upstream
@@ -251,7 +251,6 @@
   dck = diff --cached --check
   dt = difftool
   dct = difftool --cached
-
 
      
   # Submodules
