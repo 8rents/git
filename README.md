@@ -44,6 +44,7 @@ To view:
 dark themes - `delta --show-syntax-themes --dark`
 light themes - `delta --show-syntax-themes --light`
 
+
 ## Further Reading / Sources
 
 - [original gist/ config](https://gist.github.com/daedam/0f738d7baa52920035f837dc22929da2)
