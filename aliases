@@ -3,9 +3,6 @@
 # included via global git config
 # https://github.com/8rents/git
 
-[alias]
-
-# ========
 # Sections
 # ========
 # Repository Information and Health
@@ -17,358 +14,361 @@
 # Branches and past commits
 
 
-# ================================= 
-# Repository Information and Health
-# =================================
+[alias]
 
-# Status
-# ------
+  # ================================= 
+  # Repository Information and Health
+  # =================================
 
-# Shows the current state of the repository
-s = status
-sb = status -s -b
- 
-# Log
-# ---
-# Show commits, hashes and messages  
-l = log --oneline
-lg = log --oneline --graph --decorate
+  # Status
+  # ------
+  # Shows the current state of the repository
+  s = status
+  sb = status -s -b
+
+  # Log
+  # ---
+  # Show commits, hashes and messages  
+  l = log --oneline
+  lg = log --oneline --graph --decorate
   
-# Show 
-# ----
-# displays the metadata and the exact line-by-line code changes of your very last commit (HEAD).
- 
-sh = show
 
-# displays patch diff (show includes -p  y default)
-shp = show -p
+  # Show 
+  # ====
+  # displays the metadata and the exact line-by-line code changes of your very last commit (HEAD).
+  sh = show
 
-# show with no color
-shnc = show -p --no-color
+  # displays patch diff
+  # show includes -p  y default
+  shp = show -p
 
-
-# ===========================
-# Downloading & Updating Repo
-# ===========================
-
-# clone
-# ----
-# Makes a copy of a repository (or at least part of one)
- 
-# Always --recurse-sunmodules on clone
-cl = clone --recurse-submodules
-clone = clone --recurse-submodules
-  
-# Shallow history clone
-cld = clone --recurse-submodules --depth 
-cld1 = clone --recurse-submodules --depth 1
-cld3 = clone --recurse-submodules --depth 3
-cld10 = clone --recurse-submodules --depth 
-
-# Fetch
-# -----
-# Like pull but doest merge
-f = fetch
-fo = fetch origin
-fu = fetch upstream
-
-# Pull
-# ----
-# Like fetcb but merges your working tree
-
-p = pull
- 
-# Force Pull
-pf = pull -f
-pu = pull -u
-pt = pull --tags
-po = pull origin
-pao = pull --all origin
-pom = pull origin main
-
-# ====================
-# Staging & Commiting
-# ====================
+  # show with no color
+  shnc = show -p --no-color
 
   
-# Add
-# ------
-# stage files for next commit
+  # ===========================
+  # Downloading & Updating Repo
+  # ===========================
+
+  # clone
+  # ----
+  # Makes a copy of a repository (or at least part of one)
+ 
+  # Always --recurse-sunmodules on clone
+  cl = clone --recurse-submodules
+  clone = clone --recurse-submodules
   
-# Add command
-a = add
+  # Shallow history clone
+  cld = clone --recurse-submodules --depth 
+  cld1 = clone --recurse-submodules --depth 1
+  cld3 = clone --recurse-submodules --depth 3
+  cld10 = clone --recurse-submodules --depth 
 
-# Add all files in working directory
-aa = add --all
+  # Fetch
+  # =====
+  # Like pull but doest merge
+  f = fetch
+  fo = fetch origin
+  fu = fetch upstream
 
-# add all files interactively
-ai = add -i
-
- 
-# Commit
-# ------
-# Takes a snapshot of the current branch,  making an entry in the repos history
- 
-# Commit (with detailed message)
-c = commit
-
-# commit All worktree & write detailed message
-ca = commit -a
-
-# commit w/ short Message
-cm = commit -m
-
-# Commit Add all short Message
-cam = commit -am
-
-# Commit with Empty Message
-cem = commit --allow-empty -m
-
-# Amend last commit (fix typo or something)
-camm = commit --amend
-
-# Add All & Amend last commit
-caa = commit -a --amend
- 
-# Commit AMend Empty Message
-came = commit --allow-empty --amend
-
-# Commit Add All Amend Empty Message
-lcaamem = commit -a --allow-empty --amend
+  # Pull
+  # ===
+  # Like fetcb but merges your working tree
+  p = pull
+  # Force Pull
+  pf = pull -f
+  pu = pull -u
+  pt = pull --tags
+  po = pull origin
+  pao = pull --all origin
+  pom = pull origin main
 
 
-# Push
-# ----
-# Sends updated repository data to another repo
-ps = pus
-
-# Force Push
-psf = push -f  
-psu = push -u
-pst = push --tags
-pso = push origin
-psao = push --all origin
-psom = push origin main
-# psoc = !git push origin $(git bc)
-# psaoc = !git push --all origin $(git bc)
-# psfoc = !git push -f origin $(git bc
-# psuoc = !git push -u origin $(git bc)
-# psdc = !git push origin :$(git bc)
-
-
-# ========================
-# Branches and past commits
-# ========================
-
-# Branc
-# ------
-b = branch
-
-# show All branches
-ba = branch -a
-
-# Delete branc
-bd = branch -d
-bdd = branch -D
-br = branch -r
-bc = rev-parse --abbrev-ref HEAD
-bu = !git rev-parse --abbrev-ref --symbolic-full-name "@{u}"
-bs = !git-branch-status
-
-# Checkout
-# --------
-
-
-# checkout a new brach
-ob = checkout -b 
-
-# checkout a commit
-o = checkout
-
-# Remote 
-# ------
-# Add, edit, delete remote repositories
-r = remote
- 
-# add a new remote
-ra = remote add
-
-# Remove remote
-rr = remote rm
-
-# Remote View
-rv = remote -v
-
-# Remote rename
-rn = remote rename
-
-# remote prune
-rp = remote prune
-
-# remote show
-rs = remote show
-
-# Remote Add Origin
-rao = remote add origin
-
-# Remote Add Upstream
-rau = remote add upstream
-
-# Remote Remove Origin
-rro = remote remove origin
-
-# Remote Remove Upstream
-rru = remote remove upstream
-# Remote Show Origin
-rso = remote show origin
-# Show Upstream
-rsu = remote show upstream
-rpo = remote prune origin
-rpu = remote prune upstream
-
-
-# Cherry Pick
-# -----------
-# Apply changes from old commits to current commit 
-cp = cherry-pick
-cpa = cherry-pick --abort
-cpc = cherry-pick --continue
-
-# Merge
-# ----
-# Resolve conflicts between 2 or more files
-m = merge
-ma = merge --abort
-mc = merge --continue
-ms = merge --skip
-
-# Diff
-# ----
-# Compare 2 or more versions of a file
-d = diff
-dp = diff --patience
-dc = diff --cached
-dk = diff --check
-dck = diff --cached --check
-dt = difftool
-dct = difftool --ca
-
-
-# Submodules
-# ----------
-# Working with repos within repos
-
-
-# Add a new submodule
-subadd = !sh -c 'git submodule add.u://github.com/$1
-
-# Remove a submodule
-subrm = !sh -c 'git submodule deinit -f $1 &&5 rm -rf .git/modules/$1 && git rm -f $1' -
-
-# Update all Submodules
-subup = submodule update --init --recursive
-
-# Tag a submodule
-subpull = submodule foreach 'git pull --tags -f origin main || git pull --tags -f origin main'  
-
-# Apply
-# -----
-# The git apply command takes a local patch file (the output of git diff) and applies the changes directly to your local working directory files. Unlike merge or am it does not create a commit or affect history.
-ap = apply
-as = apply --stat
-ac = apply --check
-
-
-# ================
-# Email Operations
-# ================
-
-# am (Apply Mailbox)
-# ==================
-# Takes a series of emailed patch files and automatically applies them as structured commits to your current branch.
-ama = am --abort
-amr = am --resolved
-ams = am --skip
-
-# Format Patch
-# ------------
-# command converts specific Git commits into plaintext patch files (formatted as email messages) so you can share your code changes via email or apply them to another repository.
-fp = format-patch
-
-
-# Rewriting History
-# =================  
+  # Staging & Commiting
+  # ====================
   
+  # Add
+  # ------
+  # stage files for next commit
   
-# Rebase
-# ------
-rb = rebase
-rba = rebase --abort
-rbc = rebase --continue
-rbi = rebase --interactive
-rbs = rebase --skip
+  # Add command
+  a = add
+  
+  # Add all files in working directory
+  aa = add --all
 
-# Reset
-# -----
-# Rewrites local history resetting it backward
+  # add all files interactively
+  ai = add -i
+ 
 
-# reset --hard -  Completely wipes out the commits, the staging area, and all physical file changes in your folder. This cannot be easily undone.  
-reh = reset --hard  
-rehh = reset --hard HEAD
+  # Commit
+  # ------
+  # Takes a snapshot of the current branch
+  # making an entry in the repos history
+ 
+  # Commit (with detailed message)
+  c = commit
 
-# Moves your branch back and unstages your changes, but keeps the files intact in your working folder.gi
-re = reset
-rh = reset HEAD 
-rem = reset --mixed
-remh = reset --mixed HEAD
+  # commit All worktree & write detailed message
+  ca = commit -a
 
-# Moves your branch back, but keeps all your altered code staged in your index, ready to be committed agai 
-res = reset --soft
-resh = reset --soft HEAD
+  # commit w/ short Message
+  cm = commit -m
 
+  # Commit Add all short Message
+  cam = commit -am
 
+  # Commit with Empty Message
+  cem = commit --allow-empty -m
 
-# File & Worktree Operations
-# ==========================
+  # Amend last commit (fix typo or something)
+  camm = commit --amend
 
-# rm (remove)
-# -----------
+  # Add All & Amend last commit
+  caa = commit -a --amend
+ 
+  # Commit AMend Empty Message
+  came = commit --allow-empty --amend
+ 
+  # Commit Add All Amend Empty Message
+  caamem = commit -a --allow-empty --amend
 
-# force
-rmf = m -f
-
-# force & recurse (into dirs)
-rmrf = rm -r -f
-
-
-# fsck
-# ----
-# verifies the connectivity and validity of the objects in your Git database, helping you identify and recover corrupt or lost data.
-fk = fsck
-
-
-# grep
-# ----
-g = grep -p
-
-
-# List
-# ----
-ls  = ls-files
-lsf = !git ls-files | grep -i
-
-# pr = prune -v
+ 
+  # Push
+  # ----
+  # Sends updated repository data to another repo
+  ps = push
+  # Force Push
+  psf = push -f  
+  psu = push -u
+  pst = push --tags
+  pso = push origin
+  psao = push --all origin
+  psom = push origin main
 
 
-# Stash
-# -----
-sa = stash apply
-sc = stash clear
-sd = stash drop
-sl = stash list
-sp = stash pop
-ss = stash save
-ssk = stash save -k
-sw = stash show
-st = !git stash list | wc -l 2>/dev/null | grep -oEi '[0-9][0-9]*'
+  # psoc = !git push origin $(git bc)
+  # psaoc = !git push --all origin $(git bc)
+  # psfoc = !git push -f origin $(git bc)
+  # psuoc = !git push -u origin $(git bc)
+  # psdc = !git push origin :$(git bc)
+   
 
+  # ========================
+  # Branches and past commits
+  # ========================
+    
+  # Branch
+  # ------
+  b = branch
+ 
+  # show All branches
+  ba = branch -a
+ 
+  # Delete branch
+  bd = branch -d
+  bdd = branch -D
+  br = branch -r
+  bc = rev-parse --abbrev-ref HEAD
+  bu = !git rev-parse --abbrev-ref --symbolic-full-name "@{u}"
+  bs = !git-branch-status
+
+
+  # Checkout
+  # --------
+
+  # checkout a new brach
+  ob = checkout -b 
+
+  # checkout a commit
+  o = checkout
+
+
+  # Remote
+  # ------
+  # Add, edit, delete remote repositories
+  r = remote
+ 
+  # add a new remote
+  ra = remote add
+ 
+  # Remove remote
+  rr = remote rm
+
+  # Remote View
+  rv = remote -v
+
+  # Remote rename
+  rn = remote rename
+
+  # remote prune
+  rp = remote prune
+
+  # remote show
+  rs = remote show
+ 
+  # Remote Add Origin
+  rao = remote add origin
+
+  # Remote Add Upstream
+  rau = remote add upstream
+
+  # Remote Remove Origin
+  rro = remote remove origin
+
+  # Remote Remove Upstream
+  rru = remote remove upstream
+  # Remote Show Origin
+  rso = remote show origin
+  # Show Upstream
+  rsu = remote show upstream
+  rpo = remote prune origin
+  rpu = remote prune upstream
+  
+
+  # Cherry Pick
+  # -----------
+  # Apply changes from old commits to current commit 
+  cp = cherry-pick
+  cpa = cherry-pick --abort
+  cpc = cherry-pick --continue
+  
+  # Merge
+  # ----
+  # Resolve conflicts between 2 or more files
+  m = merge
+  ma = merge --abort
+  mc = merge --continue
+  ms = merge --skip
+  
+  # Diff
+  # ----
+  # Compare 2 or more versions of a file
+  d = diff
+  dp = diff --patience
+  dc = diff --cached
+  dk = diff --check
+  dck = diff --cached --check
+  dt = difftool
+  dct = difftool --cached
+
+
+     
+  # Submodules
+  # ----------
+  # Working with repos within repos
+  
+ 
+  # Add a new submodule
+  subadd = !sh -c 'git submodule add.u://github.com/$1
+
+  # Remove a submodule
+  subrm = !sh -c 'git submodule deinit -f $1 &&5 rm -rf .git/modules/$1 && git rm -f $1' -
+
+  # Update all Submodules
+  subup = submodule update --init --recursive
+  
+  # Tag a submodule
+  subpull = submodule foreach 'git pull --tags -f origin main || git pull --tags -f origin main'  
+  
+  # Apply
+  # -----
+  # The git apply command takes a local patch file (the output of git diff) and applies the changes directly to your local working directory files. Unlike merge or am it does not create a commit or affect history.
+  ap = apply
+  as = apply --stat
+  ac = apply --check
+
+  
+  # ================
+  # Email Operations
+  # ================
+
+  # am (Apply Mailbox)
+  # ==================
+  # Takes a series of emailed patch files and automatically applies them as structured commits to your current branch.
+  ama = am --abort
+  amr = am --resolved
+  ams = am --skip
+
+  # Format Patch
+  # ------------
+  # command converts specific Git commits into plaintext patch files (formatted as email messages) so you can share your code changes via email or apply them to another repository.
+  fp = format-patch
+ 
+
+  # =================  
+  # Rewriting History
+  # =================  
+  
+  # Rebase
+  # ------
+  rb = rebase
+  rba = rebase --abort
+  rbc = rebase --continue
+  rbi = rebase --interactive
+  rbs = rebase --skip
+  
+  # Reset
+  # -----
+  # Rewrites local history resetting it backward
+ 
+  # reset --hard -  Completely wipes out the commits, the staging area, and all physical file changes in your folder. This cannot be easily undone.  
+  reh = reset --hard  
+  rehh = reset --hard HEAD
+
+  # Moves your branch back and unstages your changes, but keeps the files intact in your working folder.gi
+  re = reset
+  rh = reset HEAD 
+  rem = reset --mixed
+  remh = reset --mixed HEAD
+
+  # Moves your branch back, but keeps all your altered code staged in your index, ready to be committed agai 
+  res = reset --soft
+  resh = reset --soft HEAD
+ 
+  
+   
+  # File & Worktree Operations
+  # ==========================
+
+  # rm (remove)
+  # -----------
+ 
+  # force
+  rmf = m -f
+  
+  # force & recurse (into dirs)
+  rmrf = rm -r -f
+
+  
+  # fsck
+  # ----
+  # verifies the connectivity and validity of the objects in your Git database, helping you identify and recover corrupt or lost data.
+  fk = fsck
+
+ 
+  # grep
+  # ----
+  g = grep -p
+
+
+  # List
+  # ----
+  ls  = ls-files
+  lsf = !git ls-files | grep -i
+
+  # pr = prune -v
+
+ 
+  # Stash
+  # -----
+  sa = stash apply
+  sc = stash clear
+  sd = stash drop
+  sl = stash list
+  sp = stash pop
+  ss = stash save
+  ssk = stash save -k
+  sw = stash show
+  st = !git stash list | wc -l 2>/dev/null | grep -oEi '[0-9][0-9]*'
+  
