@@ -15,7 +15,6 @@
 
 
 [alias]
-
   # ================================= 
   # Repository Information and Health
   # =================================
@@ -28,14 +27,23 @@
 
   # Log
   # ---
-  # Show commits, hashes and messages  
-  l = log --oneline
-  lg = log --oneline --graph --decorate
-  
+  # Show commits, hashes and messages
+  # l, ll, l1, l2
+  l = log --oneline --graph --decorate
+  # detailed log
+  ll = log --graph --decorate
+  # fancy 1 line log
+  l1 = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  # fancy 2 line log
+  l2 = log --graph --pretty=format:'%Cred%h%Creset %C(blue)%d%Creset%Cgreen(%cr)%Creset by %C(bold blue)%an%Creset %d\n %s'
 
+
+
+
+  
   # Show 
   # ====
-  # displays the metadata and the exact line-by-line code changes of your very last commit (HEAD).
+  # displays the metadata and the exact line-by-line code changes of your very last commit @ HEAD
   sh = show
 
   # displays patch diff
@@ -45,7 +53,6 @@
   # show with no color
   shnc = show -p --no-color
 
-  
   # ===========================
   # Downloading & Updating Repo
   # ===========================
@@ -83,7 +90,6 @@
   pao = pull --all origin
   pom = pull origin main
 
-
   # Staging & Commiting
   # ====================
   
@@ -99,40 +105,38 @@
 
   # add all files interactively
   ai = add -i
- 
 
   # Commit
   # ------
   # Takes a snapshot of the current branch
   # making an entry in the repos history
- 
+  
   # Commit (with detailed message)
   c = commit
 
   # commit All worktree & write detailed message
-  caa = commit -a
+  aac = commit -a
 
   # commit w/ short Message
   cm = commit -m
 
   # Commit Add all short Message
-  camm = commit -am
+  caam = commit -am
 
   # Commit with Empty Message
-  cem = commit --allow-empty -m
+  cem = commit --allow-empty
 
   # Amend last commit (fix typo or something)
   cam = commit --amend
 
-  # Add All & Amend last commit
-  caam = commit -a --amend
+  # Add All & AMend last commit
+  caaam = commit -a --amend
  
   # Commit AMend Empty Message
   camem = commit --allow-empty --amend
  
-  # Commit Add All Amend Empty Message
-  caaem = commit -a --allow-empty --amend
-
+  # Commit Add All AMend Empty Message
+  caaamem = commit -a --allow-empty --amend
  
   # Push
   # ----
@@ -145,7 +149,6 @@
   pso = push origin
   psao = push --all origin
   psom = push origin main
-
 
   # psoc = !git push origin $(git bc)
   # psaoc = !git push --all origin $(git bc)
@@ -173,7 +176,6 @@
   bu = !git rev-parse --abbrev-ref --symbolic-full-name "@{u}"
   bs = !git-branch-status
 
-
   # Checkout
   # --------
 
@@ -182,7 +184,6 @@
 
   # checkout a commit
   o = checkout
-
 
   # Remote
   # ------
@@ -225,7 +226,6 @@
   rpo = remote prune origin
   rpu = remote prune upstream
   
-
   # Cherry Pick
   # -----------
   # Apply changes from old commits to current commit 
@@ -251,13 +251,11 @@
   dck = diff --cached --check
   dt = difftool
   dct = difftool --cached
-
      
   # Submodules
   # ----------
   # Working with repos within repos
   
- 
   # Add a new submodule
   subadd = !sh -c 'git submodule add.u://github.com/$1
 
@@ -274,11 +272,7 @@
   # -----
   # The git apply command takes a local patch file (the output of git diff) and applies the changes directly to your local working directory files. Unlike merge or am it does not create a commit or affect history.
   ap = apply
-  as = apply --stat
-  ac = apply --check
-
-  
-  # ================
+  as = apply --st 
   # Email Operations
   # ================
 
@@ -293,7 +287,6 @@
   # ------------
   # command converts specific Git commits into plaintext patch files (formatted as email messages) so you can share your code changes via email or apply them to another repository.
   fp = format-patch
- 
 
   # =================  
   # Rewriting History
@@ -307,26 +300,48 @@
   rbi = rebase --interactive
   rbs = rebase --skip
   
+  # Reset, Restore, Revert
+  # ----------------------
+  # Reset - 
+  # Revert - goes back to a previous commit by moving forward
+  
   # Reset
   # -----
-  # Rewrites local history resetting it backward
- 
-  # reset --hard -  Completely wipes out the commits, the staging area, and all physical file changes in your folder. This cannot be easily undone.  
-  reh = reset --hard  
-  rehh = reset --hard HEAD
+  # Rewinds history resetting it backward. Best solution for single person repos since history is undone.
+  # Undoes commits and staging
+  # Note: HEAD is default commit, but head can be replaced with any commit hash 
 
-  # Moves your branch back and unstages your changes, but keeps the files intact in your working folder.gi
-  re = reset
-  rh = reset HEAD 
-  rem = reset --mixed
-  remh = reset --mixed HEAD
-
-  # Moves your branch back, but keeps all your altered code staged in your index, ready to be committed agai 
-  res = reset --soft
-  resh = reset --soft HEAD
- 
+  # Mixed (default): Rolls commit back,  Resets staging, not working tree (files) 
+  res = reset
+  # is equal to:
+      # reset
+      #=reset HEAD
+      #=reset --mixed
+      #=reset --mixed HEAD
   
-   
+  # Hard - Rolls commit back and Resets both staging (index) & files (working tree)
+  resh = reset --hard
+#=resh = reset --hard HEAD
+  
+  # Soft - Rolls commit back, leaves staging (index) & files (worktree) altered ready to be committed again.
+  ress = reset --soft
+ #=res = reset --soft HEAD
+
+
+  # Restore (reset without undoing commits)
+  # ------
+  # For shared branches on unpushed commits that need to be undone
+  # undoes files and staging and makes commits going forward in time
+  rest = restore --worktree
+  rests = restore --staged
+
+  # Revert
+  # ------
+  # For shared branches that have been pushed pushing an inverse commit
+  rev
+
+
+
   # File & Worktree Operations
   # ==========================
 
@@ -334,7 +349,7 @@
   # -----------
  
   # force
-  rmf = m -f
+  rmf = rm -f
   
   # force & recurse (into dirs)
   rmrf = rm -r -f
@@ -344,21 +359,20 @@
   # ----
   # verifies the connectivity and validity of the objects in your Git database, helping you identify and recover corrupt or lost data.
   fk = fsck
-
- 
+   
   # grep
   # ----
   g = grep -p
-
 
   # List
   # ----
   ls  = ls-files
   lsf = !git ls-files | grep -i
 
+  # Prune
+  # -----
   # pr = prune -v
 
- 
   # Stash
   # -----
   sa = stash apply

@@ -56,7 +56,7 @@
 # Core behavior of git
   
   pager = delta 
-  # Pager - set command line pager for git
+  # Command line pager for git
   # less, most, delta
   
   editor = nano
@@ -114,8 +114,8 @@
 [web]
 # Git web settings
 
-  # Preffered Browser
-  browser = firefox
+  # Preffered Browser if different than system default
+  # browser = cromite
 	
 [rerere]
   # The git rerere functionality is a bit of a hidden feature.The name stands for "reuse recorded resolution" and, as the name implies, it allows you to ask Git to remember how yorrrrrr23fu’ve resolved a hunk con7flict so that the next time it sees the same conflict, Git can resolve it for you automatically.
@@ -133,7 +133,7 @@
 
 # Delta Configuration
 [interactive]
-  cdiffFilter = delta --color-only
+  diffFilter = delta --color-only
   # Markup diffs for human consumption
 	  
 [delta]
@@ -146,16 +146,19 @@
   # or light = true, or omit for auto-detection
      
   side-by-side = true
-  # Show mdre / diff windows side by side
+  # Show merge / diff windows side by side
 
+  syntax-theme = Catppuccin Mocha
+  # syntax theme choose theme by running
+  # delta --show-syntax-themes --dark
   line-numbers = true
   # Show line numbers
     
 [merge]
 # Merge Settings
-  conflictStyle = diff3
-  # diff3 is part of `diffutils` package
-  # merge (default)
+  conflictStyle = zdiff3
+  # zdiff3 is part of `diffutils` package
+  # merge (default merge tool)
   
 [credential "https://github.com"]
   khelper = !/data/data/com.termux/files/usr/bin/gh auth git-credensinglekey
@@ -164,6 +167,15 @@
 	
 [credential "https://gist.github.com"]
 	helper = !/data/data/com.termux/files/usr/bin/gh auth git-credential
+
+
+[commit]
+# Chose the style of commit template
+  template = "templates/conventional-commit-message"
+  # Better for automation & pipelines
+  
+  # template = "templates/human-readable-commit-message"
+  # Simply easier to rear
 
 [include]
 # External files to include into this .config file
