@@ -1,67 +1,38 @@
-# Android Git Global Config
-# ========================= 
+# User Level Global Git Config for Android
+# ======================================== 
+# Sets config options for all of the git projects for the current user 
 # Repo: github.com/8rents/git
-# Last Updated: 2026-06-26
-
-# Sections
-# --------
-# 026 Safe Folder
-# 032 User Info
-# 045 Initialization
-# 053 Core Functionality
-# 083 Fetch
-# 092 Push
-# 105 Large File Storage
-# 112 Web & Browser
-# 118 rerere (reuse recorded resolution)
-# 124 Gitflow
-# 128 Github
-# 133 Interactive (Delta Config)
-# 137 Delta
-# 152 Merge
-# 158 Includes / Aliases
-# ---------
+# Last Updated: 2026-07-03
 
 
 [safe]
 # Set a folder for safe execution of code
-  
+
   directory = *
-  # * makes all directories on the file system safe
+    # * makes all directories on the file system safe
 
-[user]
-# Set the local git users credentials
 
-  # Name of User
-  name = Brenton Holiday
-  
-  # Users email address
-  email = 8rents@gmail.com
-
-  # Display username
-  username = 8rents
-
-  # default GPG key to use when creating signed tags
-  # signingkey =
 [init]
 # Settings for when git initializes
   
-  defaultBranch = info
+  defaultBranch = blank
   # Set the default branch name 
   
-  # templateDir = template
+  templateDir = ~/dotfiles/git/config.d/repos/default
   # Path to directory for git tempalates
+  # Default templateDir is at: `/usr/share/git-core/templates`
+  
 
 [core]
 # Core behavior of git
   
-  pager = delta 
-  # Command line pager for git
-  # less, most, delta
-  
   editor = nano
   # Preffered Text Editor
   # code, subl, mate, nano, vim
+
+  pager = less
+  # Command line pager for git
+  # less, most, delta
   
   excludesfile = ignore
   # Path to external excludes file 
@@ -82,6 +53,10 @@
   # input - macOS / Linux - No change on checkout; converts CRLF to LF on commit.
   # false - (Same-OS Teams) No conversion happens. Files are saved exactly as they are.
 
+  pager = delta 
+  # Command line pager for git
+  # less, most, delta
+  
 [fetch]
 # Fetch settings
 
@@ -112,73 +87,52 @@
   required = true
 
 [web]
-# Git web settings
+# Git web / browser settings
 
-  # Preffered Browser if different than system default
+  # Browser git should open if you don't want it to open the system default
   # browser = cromite
 	
 [rerere]
-  # The git rerere functionality is a bit of a hidden feature.The name stands for "reuse recorded resolution" and, as the name implies, it allows you to ask Git to remember how yorrrrrr23fu’ve resolved a hunk con7flict so that the next time it sees the same conflict, Git can resolve it for you automatically.
+  # The git rerere functionality is a bit of a hidden feature.The name stands for "reuse recorded resolution" and, as the name implies, it allows you to ask Git to remember how you've resolved a hunk conflict before so that the next time it sees the same conflict, Git can resolve it for you automatically.
   enabled = 1
   autoupdate = 1
 
 # Gitflow
 [gitflow "prefix"]
   versiontag = v
-
-# GitHub credentials
-[github]
-  user = 8rents
-  # token = token
-
-# Delta Configuration
-[interactive]
-  diffFilter = delta --color-only
-  # Markup diffs for human consumption
-	  
-[delta]
-# Delta Settings
-
-  navigate = true 
-  # use n and N to move between diff sections
-
-  dark = true     
-  # or light = true, or omit for auto-detection
-     
-  side-by-side = true
-  # Show merge / diff windows side by side
-
-  syntax-theme = Catppuccin Mocha
-  # syntax theme choose theme by running
-  # delta --show-syntax-themes --dark
-  line-numbers = true
-  # Show line numbers
-    
-[merge]
-# Merge Settings
-  conflictStyle = zdiff3
-  # zdiff3 is part of `diffutils` package
-  # merge (default merge tool)
   
 [credential "https://github.com"]
+# GitHub Credentials
   khelper = !/data/data/com.termux/files/usr/bin/gh auth git-credensinglekey
-	helper = !/data/data/com.termux/files/usr/bin/gh auth git-credential
+   helper = !/data/data/com.termux/files/usr/bin/gh auth git-credential
   # whether or not to accept one-letter input withouttia
 	
 [credential "https://gist.github.com"]
+# GitHub Gists Credentials
 	helper = !/data/data/com.termux/files/usr/bin/gh auth git-credential
 
 
 [commit]
-# Chose the style of commit template
-  template = "templates/conventional-commit-message"
-  # Better for automation & pipelines
-  
-  # template = "templates/human-readable-commit-message"
-  # Simply easier to rear
+# Chose the style of commit template. Comment out all template lines to use the default template
+
+  # Conventional (Better for automation & pipelines)
+  template = ~/dotfiles/git/config.d/messages/commit/conventional
+
+  # Human Readable (Easier for people to read)
+  # template = ~/dotfiles/git/templates/messages/commit/human-readable
 
 [include]
-# External files to include into this .config file
-  
-  path = aliases
-  # Git alias definitions file
+# External files to include into this config file
+
+  # 8rents@gmail.com user configs
+  path = config.d/users/brent.gitconfig
+
+  # Custom color options
+  path = config.d/color/auto.gitconfig
+
+  # Custom abbriviated git commands aliases (ex. commit --all = ca)
+  path = config.d/aliases/abbr.gitconfig
+  path = config.d/aliases/macros.gitconfig
+
+  # Set Delta as pager with dark catppuccin theme
+  path = config.d/pagers/delta/dark-catppuccin-mocha.gitconfig

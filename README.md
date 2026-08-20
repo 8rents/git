@@ -1,23 +1,12 @@
-# Git Config for Android
+<img src="https://raw.githubusercontent.com/vorillaz/devicons/refs/heads/main/packages/core/export-files/icons/git.svg" alt="git"> 
+
+Global User Config *for* `Android`
 
 > *User global level Git config that uses `delta` for merge/diff, `nano` for edits and `more` as a pager*
 
 ---
 
-## Required Installs
-
-- git (obviously)
-- gh - GitHub CLI tool, used for signing into GitHub
-- git-delta - delta is used as pager and merge tool
-- diffutils - diff3 is the set difftool, which comes in this package
-- most - system pager, especially for colored man docs
-- nano - text editor for writing commit messages. Maybe more...
-- gnupg - Creating a signing PGP key to sign commits with
-
-```bash
-apt update && \
-apt install git gh diffutils git-delta most nano gnupg
-```
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 600 600"><g clip-path="url(#devicon-git-1-a)"><path fill="#2F2707" d="M359.6 260c-13.2 0-23 6.5-23 22 0 11.7 6.5 19.8 22.3 19.8 13.4 0 22.4-7.8 22.4-20.3 0-14-8-21.5-21.7-21.5m-26.3 109.8c-3.1 3.8-6.2 7.8-6.2 12.6 0 9.6 12.2 12.5 28.9 12.5 13.9 0 32.8-1 32.8-13.9 0-7.7-9.1-8.1-20.6-8.9zm70.8-109a38 38 0 0 1 8.8 24c0 26.6-20.8 42.2-51 42.2a76 76 0 0 1-18.8-2.2l-8 12.7 23.5 1.4c41.4 2.6 65.8 3.8 65.8 35.6 0 27.5-24.2 43-65.8 43-43.3 0-59.8-11-59.8-29.8 0-10.8 4.8-16.5 13.2-24.4a16 16 0 0 1-10.5-15.8c0-5.2 2.6-10 7-14.6q6.2-6.6 14.7-14.3c-11.7-5.8-20.5-18.2-20.5-35.9 0-27.5 18.1-46.4 54.7-46.4a82 82 0 0 1 22 2.4h46.7V259zm64-43.5c-13.6 0-21.5-8-21.5-21.6s7.9-21 21.5-21c13.9 0 21.8 7.4 21.8 21s-7.9 21.6-21.8 21.6M437.3 361v-19l12.2-1.6c3.3-.5 3.8-1.2 3.8-4.8v-70.3c0-2.6-.7-4.3-3.1-5l-13-4.5 2.7-19.4h49.5v99.2c0 3.9.2 4.3 3.8 4.8l12.2 1.7V361zm162.7-9.3a96 96 0 0 1-39 9.6c-28.4 0-39.2-11.5-39.2-38.5V260c0-1.4 0-2.4-2-2.4h-16.7v-21.3c21.1-2.4 29.5-12.9 32-39H558v34c0 1.7 0 2.4 2 2.4h33.6v24H558v57c0 14.2 3.4 19.7 16.3 19.7a57 57 0 0 0 19.3-3.9z"/><path fill="#DE4C36" d="M245.7 289 136.4 179.5a16 16 0 0 0-22.8 0l-22.8 22.7 28.8 28.8a19.1 19.1 0 0 1 24.3 24.4l27.8 27.8a19.2 19.2 0 1 1-11.5 10.8l-26-25.9v68.1q2.8 1.5 5.2 3.7a19.2 19.2 0 1 1-20.9-4.2V267a19 19 0 0 1-10.4-25.2l-28.4-28.3-75 75a16 16 0 0 0 0 22.8l109.4 109.3a16 16 0 0 0 22.8 0l108.8-108.8a16 16 0 0 0 0-22.9"/></g><defs><clipPath id="devicon-git-1-a"><path fill="#fff" d="M0 0h600v600H0z"/></clipPath></defs></svg> 
 
 ## How to use these files
 
@@ -27,23 +16,141 @@ The best way to use these files is to simply clone this repository to `XDG_CONFI
 git clone -b android https://github.com/8rents/git $XDG_CONFIG_HOME/git
 ```
 
+### Install Required Dependencies
+
+```bash
+apt update && \
+apt install -y git gh diffutils git-delta most nano gnupg
+```
+
+#### Dependencies List for My Git Config
+
+- `git` (obviously)
+- `gh` - GitHub CLI tool, used for signing into GitHub
+- `git-delta` - delta is used as git's pager and merge tool
+- `diffutils` - diff3 is the set difftool, which comes in this package
+- `most` - system pager, especially for colored man docs
+- `nano` - text editor for writing commit messages. Maybe more...
+- `gnupg` - Creating a signing PGP key to sign commits with and encrypting secret files
+
+---
+
 ## Included Files
 
 There are a few different files that are at play here.
 
+```
+git/
+├── config
+├── config.d/
+├── docs/
+└── ignore
+```
+**Files**
+
 - `config` - The main configuration file. This file is loaded first 
 - `ignore` - The user level global ignore file
-- `aliases` - A file of aliases to make using git on the CLI easier.
 
-## Customizing Delta
+**Folders**
 
-### Picking a theme
+- `docs/` - Directory holding documentation and git related articles
+- `config.d/` - Directory holding a modularized version of the config file
+ 
+## The `config.d` Directory. *Modularizing Git Configs to the High Heavens*
+
+I decided to make my git configuration extremely modular so that I can reuse components across different systems (branches). The global `config` file has been split into many smaller files within the `config.d` directory.
+
+### What's in `config.d`?
+
+```
+config.d
+├── aliases
+│   ├── abbr.gitconfig
+│   └── macros.gitconfig
+├── colors
+│   ├── auto.gitconfig
+│   ├── new-color-scheme-template.gitconfig
+│   └── tomorrow-night-eighties.gitconfig
+├── messages
+│   └── commit
+│       ├── conventional
+│       └── human-readable
+├── pagers
+│   └── delta
+│       └── dark-catppuccin-mocha.gitconfig
+├── repos
+│   └── default
+└── users
+    └── brent.gitconfig
+```
+
+#### Aliases
+
+Aliases make commands quicker and easier to execute. They also help to prevent syntax errors because they have already been done. 
+
+> *You can assign as many alias files as you want. Both abbriviations and macros are loaded*
+
+##### Abbreviation Aliases: `abbr.gitconfig`
+
+Stands for abbreviation. These are abbriviated aliases like `g caa` for `git commit -a`
+
+Almost every Git command and option are outlined in the `abbr.gitconfig` file, with the most helpful and necessary commands being aliases right inside the commamd refetence itself.
+
+##### Macro Aliases: `macros.gitconfig`
+
+More complex git commands that don't rely on abbreviations and often strive to use more plain english.
+
+#### Color Schemes
+
+Git has the ability to recolor every bit of it's command line interface. 
+
+> *You can only select one color scheme at a time*
+
+- `auto.gitconfig` `[selected]` - the default color scheme, which is also git's default. 
+- `tomorrow-night-eighties.gitconfig` - is a custom color scheme that uses it's own hex values instead  of using the existing terminal color values. It's more experimental and more of a demo than anything.
+
+##### Creating New Color Schemes for Git
+
+I've included a template that has just about every color property notated and ready to use. 
+
+1. Make a copy of `new-color-scheme-template.gitconfig` and rename it.
+2. Open the new copy and start adding values
+3. Add the new color file to be included in the main `config` file under `[include]`
+
+##### Messages
+
+The messages folder holds different types of messages. So far it only has 2 types of commit message templates. 
+
+###### Commit Messages
+
+> *You can only use one commit message template at a time*
+
+- `conventional` `[selected]` - The conventional message template is designed to be read by people and machines in build pipe lines and to be the data baclend to auto-generate chamgelogs noce and cleanly
+- `human-readable` - Is less suited to automations and more for the simple human mind and it difficulty reading things that look archaic.
+
+##### Pagers
+
+Include a pager profile from within the `pager` directory. Right now there is only 1 pager profile. A delta cappuccin dark theme.
+
+**Path:** `config.d/pagers/delta/dark/catppuccin/mocha.config`
+
+### Picking other delta theme
 
 To view:
 
-dark themes - `delta --show-syntax-themes --dark`
-light themes - `delta --show-syntax-themes --light`
+- dark themes - `delta --show-syntax-themes --dark`
+- light themes - `delta --show-syntax-themes --light`
 
+
+#### Repos
+
+This directory is defined as the `templateDir` in which to auto populate new repos with certain assets. I'm now pretty sure those assets dont populate the initialized directory, but the `.git` folder within it. Which is not what I was hoping for.
+
+#### Users
+
+The Users directory holds user profiles. User profiles are pretty straight forward. Name, Email, Username... That's about it.
+
+---
 
 ## Further Reading / Sources
 
