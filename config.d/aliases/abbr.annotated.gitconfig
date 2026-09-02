@@ -1,0 +1,59 @@
+Git Config Fully Annotated
+# =================================
+
+# init
+# ----
+# Create a new repository
+
+i = init
+
+# init options
+# ~~~~~~~~~~~~
+
+# --bare                  
+# create a bare repository. Bare repositories are used as hubs that can be pushed to.
+
+# --initial-branch -b
+# override the name of the initial branch. Initial bramch
+
+# --object-format
+# -- specify hash algorithm to use
+
+# --quiet -q
+# do not print any results to stdout
+
+# --ref-format
+# specify reference format to use
+
+# --separate-git-dir
+# create git dir elsewhere and link it using the gitd
+
+# --shared
+# share repository amongst several users
+
+# --template              
+# directory to use as a template for the object data
+
+
+# Status
+# -------
+s = status
+
+
+# Log
+# ---
+
+
+# Cloning
+# -------
+cl
+cld
+cls
+clds
+clsd
+
+# Pull, push, clone
+# -----------------
+pl = pull
+ps = push
+

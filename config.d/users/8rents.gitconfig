@@ -1,0 +1,20 @@
+# 8rents user config
+[user]
+# Set global git users credentials
+
+  # Name of User
+  name = Brenton Holiday
+  
+  # Users email address
+  email = 8rents@gmail.com
+
+  # Display username
+  username = 8rents
+
+  # default GPG key to use when creating signed tags
+  # signingkey =
+
+# GitHub credentials
+[github]
+  user = 8rents
+  # token = token

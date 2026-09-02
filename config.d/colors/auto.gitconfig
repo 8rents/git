@@ -1,0 +1,83 @@
+# User (Global) git color settings
+# ================================
+
+[color]
+  # All UI Command Color settings
+  # ---------------------
+  # Sets the value of all color capable git commamds
+  ui = auto
+    # auto : color only interactive output in the terminal
+    # always : color all git output (even piped output)
+    # false : don't color any git output
+
+  # whether or not to feed colored output to pager
+  # pager =
+
+
+  # Individual UI Command Color settings
+  # ----------------------------
+  # Each of these can be toggled to auto, always or off
+  # Further settings for each of these are a available below
+  # The above ui setting applies the value to all of the following below
+  
+  # advice = auto
+  # branch = auto
+  # diff = auto
+  # interactive = auto
+  # remote = auto
+  # transport = auto
+  # blame = auto
+  # decorate = auto
+  # grep = auto
+  # push = auto
+  # status = auto
+
+[color "advice"]
+  # hint =
+
+
+[color "branch"]
+  # color of the current branch
+  # current = 
+
+  # color of a local branch
+  # local =
+
+  # color of other branches
+  # plain =
+
+  # color of a remote branch
+  # remote =
+
+  # reset =
+
+  # color of upstream branches
+  # upstream =
+
+  # worktree =
+
+[color "diff"]
+
+
+[color "interactive"]
+
+
+[color "remote"]
+
+
+[color "transport"]
+
+
+[color "blame"]
+
+
+[color "decorate"]
+
+
+[color "grep"]
+
+
+[color "push"]
+
+
+[color "status"]

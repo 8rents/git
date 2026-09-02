@@ -1,0 +1,18 @@
+# ============== Human Readable Commit Message =====================
+# Subject
+# [Ticket-ID] Capitalized summary in imperative mood
+# Example: [PROJ-456] Implement rate limiting for API endpoints
+# ----------------------------------------------------------------------
+
+# ------------------ 72-character wrapping ruler -----------------------
+# Why is this change necessary? (Provide context)
+
+
+# What does this change alter or fix? (Brief technical summary)
+
+
+# Side effects, breaking changes, or additional notes:
+
+
+
+# Co-authored-by: Name <email>

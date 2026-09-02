@@ -6,8 +6,8 @@
 
 
 [safe]
-# Set a folder for safe execution of code
 
+  # Set a folder for safe execution of code
   directory = *
     # * makes all directories on the file system safe
 
@@ -18,21 +18,20 @@
   defaultBranch = blank
   # Set the default branch name 
   
-  templateDir = ~/dotfiles/git/config.d/repos/default
+  # templateDir = ~/dotfiles/git/config.d/repos/default
   # Path to directory for git tempalates
-  # Default templateDir is at: `/usr/share/git-core/templates`
-  
+
 
 [core]
 # Core behavior of git
   
+  pager = delta 
+  # Command line pager for git
+  # less, most, delta
+  
   editor = nano
   # Preffered Text Editor
   # code, subl, mate, nano, vim
-
-  pager = less
-  # Command line pager for git
-  # less, most, delta
   
   excludesfile = ignore
   # Path to external excludes file 
@@ -53,10 +52,6 @@
   # input - macOS / Linux - No change on checkout; converts CRLF to LF on commit.
   # false - (Same-OS Teams) No conversion happens. Files are saved exactly as they are.
 
-  pager = delta 
-  # Command line pager for git
-  # less, most, delta
-  
 [fetch]
 # Fetch settings
 
@@ -100,39 +95,62 @@
 # Gitflow
 [gitflow "prefix"]
   versiontag = v
+
+# Delta Configuration
+[interactive]
+  diffFilter = delta --color-only
+  # Markup diffs for human consumption
+	  
+[delta]
+# Delta Settings
+  navigate = true 
+  # use n and N to move between diff sections
+
+  dark = true     
+  # or light = true, or omit for auto-detection
+     
+  side-by-side = true
+  # Show merge / diff windows side by side
+
+  syntax-theme = Catppuccin Mocha
+  # syntax theme choose theme by running
+  # delta --show-syntax-themes --dark
+  line-numbers = true
+  # Show line numbers
+    
+[merge]
+# Merge Settings
+  conflictStyle = zdiff3
+  # zdiff3 is part of `diffutils` package
+  # merge (default merge tool)
   
 [credential "https://github.com"]
-# GitHub Credentials
   khelper = !/data/data/com.termux/files/usr/bin/gh auth git-credensinglekey
-   helper = !/data/data/com.termux/files/usr/bin/gh auth git-credential
+  helper = !/data/data/com.termux/files/usr/bin/gh auth git-credential
   # whether or not to accept one-letter input withouttia
 	
 [credential "https://gist.github.com"]
-# GitHub Gists Credentials
 	helper = !/data/data/com.termux/files/usr/bin/gh auth git-credential
 
 
 [commit]
-# Chose the style of commit template. Comment out all template lines to use the default template
+# Chose the style of commit template 
 
   # Conventional (Better for automation & pipelines)
   template = ~/dotfiles/git/config.d/messages/commit/conventional
 
-  # Human Readable (Easier for people to read)
-  # template = ~/dotfiles/git/templates/messages/commit/human-readable
+  # Human Readable (Simply easier to read)
+  # template = ~/dotfiles/git/config.d/messages/commit/human-readable
 
 [include]
-# External files to include into this config file
-
-  # 8rents@gmail.com user configs
-  path = config.d/users/brent.gitconfig
-
+# External files to include into this .config file
+  # 8rents@gmail.com user
+  path = config.d/users/8rents.gitconfig
   # Custom color options
   path = config.d/color/auto.gitconfig
 
-  # Custom abbriviated git commands aliases (ex. commit --all = ca)
+  # Custom abbriviated git commands aliases
+  # ex. commit --all = ca
   path = config.d/aliases/abbr.gitconfig
   path = config.d/aliases/macros.gitconfig
-
-  # Set Delta as pager with dark catppuccin theme
-  path = config.d/pagers/delta/dark-catppuccin-mocha.gitconfig
+ 
